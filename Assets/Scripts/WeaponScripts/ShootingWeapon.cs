@@ -12,7 +12,8 @@ public class ShootingWeapon: MonoBehaviour
     [SerializeField] private InputManager inputManager;
 
     [Header("WeaponPickup")]
-    public TextMeshProUGUI pickUpText;
+    public GameObject RaycasterObj;
+    public GameObject pickUpUI;
     public Transform player, weaponHolder;
     public Camera playerCamera;
 
@@ -22,7 +23,7 @@ public class ShootingWeapon: MonoBehaviour
     public bool isEquipped;
     public bool slotFull;
 
-    private bool isRaycasted;
+    public bool isRaycasted;
     [Header("Sway variables")]
     [SerializeField] private float smooth;
     [SerializeField] private float swayMultiplier;
@@ -40,13 +41,13 @@ public class ShootingWeapon: MonoBehaviour
 
     private void Update() 
     {
-        PickupLogic();
         ShootCurrentWeapon();
         if(isCooldown)
         {
             ApplyCooldown();
         }
         SwayWeapon();
+        PickupLogic();
     }
 
     private void SwayWeapon()
@@ -63,21 +64,27 @@ public class ShootingWeapon: MonoBehaviour
 
     private void PickupLogic()
     {
-        isRaycasted = Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, pickUpRange);
+        isRaycasted = Physics.Raycast(RaycasterObj.transform.position, RaycasterObj.transform.forward, out RaycastHit hit, pickUpRange);
         if(!isEquipped)
         {
             if (isRaycasted)
             {
-                if(hit.transform.Equals("PickUpWeapon"))
+                //Debug.Log(hit.transform.gameObject.name);
+                if(hit.transform.tag.Equals("PickUpWeapon"))
                 {    
-                    pickUpText.gameObject.SetActive(true);
+                    Debug.Log("Detected");
+                    pickUpUI.SetActive(true);
                     if(inputManager.input.ShootingActions.PickUpWeapon.WasPressedThisFrame() && !slotFull)
                         PickUpWeapon(hit.transform.gameObject);
+                }
+                else
+                {
+                    pickUpUI.SetActive(false);
                 }
             }
             else
             {
-                pickUpText.gameObject.SetActive(false);
+                pickUpUI.SetActive(false);
             }
         }
         
@@ -89,7 +96,7 @@ public class ShootingWeapon: MonoBehaviour
     {
         isEquipped = true;
         slotFull = true;
-        pickUpText.gameObject.SetActive(false);
+        pickUpUI.SetActive(false);
 
         WeaponPickup newWeapon = weaponToBeEquipped.GetComponent<WeaponPickup>();
         Instantiate(newWeapon.weaponPrefab, weaponHolder);
@@ -157,5 +164,16 @@ public class ShootingWeapon: MonoBehaviour
         {
             //Debug.Log("No gun equipped");
         }
+    }
+
+    private void OnDrawGizmosSelected() 
+    {
+        if(!isRaycasted)
+        Gizmos.color = Color.red;
+        else
+        Gizmos.color = Color.green;
+
+        Vector3 dir = RaycasterObj.transform.TransformDirection(Vector3.forward) * pickUpRange;
+        Gizmos.DrawRay(RaycasterObj.transform.position, dir);   
     }
 }
