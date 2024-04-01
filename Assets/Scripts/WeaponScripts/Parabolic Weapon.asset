@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39665f6b74914bf4b9cfe5da8fde0557, type: 3}
+  m_Name: Parabolic Weapon
+  m_EditorClassIdentifier: 
+  projectileSpeed: 10
+  projectileSize: 7
+  timeBetweenShots: 2
+  pickup_prefab: {fileID: 7958580802242330572, guid: c83acbd29b549db40a791bbbb5c5e266, type: 3}
+  projectileSfx: {fileID: 8300000, guid: 09b2c1f46498c904f9e845071f05a930, type: 3}
+  ammo_instantiate_object: {fileID: 4855390228097671092, guid: 9ec3cf3d5b758d44c85aaeca4275174e, type: 3}

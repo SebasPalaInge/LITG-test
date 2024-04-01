@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39665f6b74914bf4b9cfe5da8fde0557, type: 3}
+  m_Name: Gravitational Weapon
+  m_EditorClassIdentifier: 
+  projectileSpeed: 2.2
+  projectileSize: 0.5
+  timeBetweenShots: 2.8
+  pickup_prefab: {fileID: 1681631522050928753, guid: 36c154db240ad6845abdd16b56569333, type: 3}
+  projectileSfx: {fileID: 8300000, guid: 18c39b8b7f4823a4b8367c6e9066a739, type: 3}
+  ammo_instantiate_object: {fileID: 7680857595003283821, guid: 0d78e9fbfbf93c941a3549363b72490c, type: 3}
