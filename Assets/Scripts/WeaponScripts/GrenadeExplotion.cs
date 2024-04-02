@@ -15,7 +15,6 @@ public class GrenadeExplotion : MonoBehaviour
     private void OnCollisionEnter(Collision other) 
     {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
-        Instantiate(particleExplotionEffect, transform.position, Quaternion.identity);
 
         if (mshRenderer.enabled)
         {
@@ -27,6 +26,8 @@ public class GrenadeExplotion : MonoBehaviour
                 if(objRb == null) continue;
 
                 objRb.AddExplosionForce(explotionForceValue, transform.position, explotionRange);
+                Instantiate(particleExplotionEffect, transform.position, Quaternion.identity);
+                StartCoroutine(FindObjectOfType<CameraShaker>().Shake());
             }
 
             mshRenderer.enabled = false;

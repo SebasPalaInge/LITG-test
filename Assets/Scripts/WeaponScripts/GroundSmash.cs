@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class GroundSmash : MonoBehaviour
@@ -10,7 +9,7 @@ public class GroundSmash : MonoBehaviour
 
     public float upwardForceValue = 1f;
     public float explotionForceIntensity = 50f;
-    public float explotionForceRange = 10f;
+    public float explotionForceRange = 10f;  
 
     private void OnCollisionEnter(Collision coll) 
     {
@@ -30,6 +29,7 @@ public class GroundSmash : MonoBehaviour
 
                 objRb.AddExplosionForce(upwardForceValue, transform.position, explotionForceRange);
                 objRb.AddForce(new Vector3(0f, upwardForceValue, 0f), ForceMode.Impulse);
+                StartCoroutine(FindObjectOfType<CameraShaker>().Shake(0.45f, 0.15f));
             }
         }    
     }

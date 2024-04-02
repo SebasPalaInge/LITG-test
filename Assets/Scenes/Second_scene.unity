@@ -623,7 +623,6 @@ MonoBehaviour:
   isEquipped: 0
   slotFull: 0
   isRaycasted: 0
-  gunLayerMask: 5
   smooth: 4
   swayMultiplier: 1.1
   audioSrc: {fileID: 392165469}
@@ -1314,9 +1313,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1002132561}
   - component: {fileID: 1002132560}
-  - component: {fileID: 1002132559}
+  - component: {fileID: 1002132564}
   - component: {fileID: 1002132562}
   - component: {fileID: 1002132563}
+  - component: {fileID: 1002132559}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1440,6 +1440,20 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1002132564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002132558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e2bb20e57d8e44f817e456626d9282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.45
+  magnitude: 0.12
 --- !u!1 &1014703381
 GameObject:
   m_ObjectHideFlags: 0

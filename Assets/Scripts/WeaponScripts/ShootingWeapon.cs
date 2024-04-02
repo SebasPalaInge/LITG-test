@@ -72,7 +72,7 @@ public class ShootingWeapon: MonoBehaviour
                 //Debug.Log(hit.transform.gameObject.name);
                 if(hit.transform.tag.Equals("PickUpWeapon"))
                 {    
-                    Debug.Log("Detected");
+                    //Debug.Log("Detected");
                     pickUpUI.SetActive(true);
                     if(inputManager.input.ShootingActions.PickUpWeapon.WasPressedThisFrame() && !slotFull)
                         PickUpWeapon(hit.transform.gameObject);
